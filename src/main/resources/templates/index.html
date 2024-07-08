@@ -1,0 +1,285 @@
+<!-- Designed by -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--    Head Block Start -->
+    <div th:replace="~{front/include/head}"/>
+
+    <body>
+
+        <!--  Header Block Start-->
+        <div th:replace="~{front/include/header}"></div>
+
+        <main>
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+            <section id="section-2">
+                <div class="py-5">
+                    <div class="container py-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2 class="fw-bold pb-2">About us</h2>
+                                <p>Sed pellentesque leo urna, at maximus nunc tristique quis. Sed vel eros laoreet, dictum quam eget, ornare magna. Vivamus hendrerit massa vel arcu finibus varius.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa-regular fa-square-check pe-1"></i> Aliquam erat volutpat</li>
+                                    <li><i class="fa-regular fa-square-check pe-1"></i> Nam tincidunt sodales fringilla.</li>
+                                    <li><i class="fa-regular fa-square-check pe-1"></i> Nulla nec sagittis sapien.</li>
+                                    <li><i class="fa-regular fa-square-check pe-1"></i> Nulla tempus imperdiet arcu vitae ultrices.</li>
+                                </ul>
+                                <p>Vivamus at nunc purus. Fusce et urna viverra, venenatis dui ac, fringilla arcu. Sed vel dui dignissim, scelerisque justo ac, aliquam metus. Donec eleifend tincidunt dignissim. Donec efficitur ligula et ipsum ultrices pulvinar. Proin diam erat, porta id odio quis, pretium ultricies quam.</p>
+                                <p>Nulla nec sagittis sapien. Morbi laoreet dui sit amet magna malesuada, nec malesuada lectus condimentum. Sed ultrices justo nec nibh tristique, eget finibus neque tincidunt.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="aos-item__inner">
+                                        <img title="" class="rounded w-100" src="/assets/img/about.jpg" alt="">
+                                        <div class="caption">
+                                            <figcaption class="figure-caption py-2">A caption for the above image.</figcaption>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-3">
+                <div class="bg-light py-5">
+                    <div class="container py-5">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h2 class="pb-4 fw-bold">Phòng nổi bật</h2>
+                            </div>
+                        </div>
+                        <div th:if="${not #lists.isEmpty(houseDTOList)}">
+                            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4 col-xs-6">
+                                <div th:each="houseDTO : ${houseDTOList}">
+                                    <a class="text-decoration-none link-secondary" th:attr="href='javascript:void(0);', onclick='redirectToPost(\'' + ${houseDTO.id} + '\', \'' + ${houseDTO.title} + '\')'" data-sub-html=".caption">
+                                        <div class="aos-item" data-aos="fade-up" data-aos-delay="200">
+                                            <div class="row aos-item__inner">
+                                                <div class="caption">
+                                                    <img th:src="@{'data:image/jpeg;base64,' + ${houseDTO.imageBase64}}" class="img-fluid w-100" style="object-fit: cover; height: 200px">
+                                                </div>
+
+                                                <div class="caption">
+                                                    <h3 class="text-center p-2 h5" th:text="'Giá phòng: ' + ${houseDTO.priceFormatVN}"></h3>
+                                                </div>
+                                                <div class="caption">
+                                                    <h3 class="text-center p-2 h5" th:text="${houseDTO.title}"></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link"> < </a>
+                                </li>
+                                <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
+                                <li class="page-item" aria-current="page">
+                                    <a class="page-link link-dark" href="#">2</a>
+                                </li>
+                                <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link link-dark" href="#"> > </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-5">
+                <div id="section-5-start"></div>
+                <div class="py-5">
+                    <div class="container py-5">
+                        <h2 class="pb-4 fw-bold">Best services</h2>
+                        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-xl-4 g-4">
+                            <div class="aos-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="aos-item__inner d-block bg-light p-4 text-center rounded">
+                                    <i class="fa-solid fa-handshake-angle display-4 p-2 mb-2"></i>
+                                    <h4 class="pt-2">Sed dapibus</h4>
+                                    <p>Aenean id ornare velit, quis condimentum augue.</p>
+                                </div>
+                            </div>
+                            <div class="aos-item" data-aos="fade-up" data-aos-delay="400">
+                                <div class="aos-item__inner d-block bg-light p-4 text-center rounded">
+                                    <i class="fa-solid fa-gear display-4 p-2 mb-2"></i>
+                                    <h4 class="pt-2">Cras vitae</h4>
+                                    <p>Aenean id ornare velit, quis condimentum augue.</p>
+                                </div>
+                            </div>
+                            <div class="aos-item" data-aos="fade-up" data-aos-delay="600">
+                                <div class="aos-item__inner d-block bg-light p-4 text-center rounded">
+                                    <i class="fa-solid fa-cubes display-4 p-2 mb-2"></i>
+                                    <h4 class="pt-2">Sed pellentesque</h4>
+                                    <p>Aenean id ornare velit, quis condimentum augue.</p>
+                                </div>
+                            </div>
+                            <div class="aos-item" data-aos="fade-up" data-aos-delay="800">
+                                <div class="aos-item__inner d-block bg-light p-4 text-center rounded">
+                                    <i class="fa-solid fa-truck display-4 p-2 mb-2"></i>
+                                    <h4 class="pt-2">Aliquam erat</h4>
+                                    <p>Aenean id ornare velit, quis condimentum augue.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="bg-light py-5">
+                    <div class="container py-5">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h2 class="pb-4 fw-bold">Blog published</h2>
+                            </div>
+                            <div><a class="btn btn-outline-dark" href="">View All</a></div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-xl-3 col-sm-12">
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="card aos-item__inner border-0 shadow-sm">
+                                        <a href="#" class="link-dark text-decoration-none"><img title="" class="card-img-top w-100" src="/assets/img/blog-1.jpg" alt=""></a>
+                                        <div class="card-body">
+                                            <h4><a href="#" class="link-dark text-decoration-none">How to create a responsive website?</a></h4>
+                                            <div class="mb-1 text-muted"><small>Nov 12, by John</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 col-sm-12">
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="card border-0 shadow-sm">
+                                        <a href="#" class="link-dark text-decoration-none"><img title="" class="card-img-top w-100" src="/assets/img/blog-2.jpg" alt=""></a>
+                                        <div class="card-body">
+                                            <h4><a href="#" class="link-dark text-decoration-none">How to hire right wordpress developer?</a></h4>
+                                            <div class="mb-1 text-muted"><small>Apr 02, by Peter</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 col-sm-12">
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="card border-0 shadow-sm">
+                                        <a href="#" class="link-dark text-decoration-none"><img title="" class="card-img-top w-100" src="/assets/img/blog-3.jpg" alt=""></a>
+                                        <div class="card-body">
+                                            <h4><a href="#" class="link-dark text-decoration-none">How to upload content in wordpress site?</a></h4>
+                                            <div class="mb-1 text-muted"><small>Dec 15, by Williams</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 col-sm-12">
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="800">
+                                    <div class="card border-0 shadow-sm">
+                                        <a href="#" class="link-dark text-decoration-none"><img title="" class="card-img-top w-100" src="/assets/img/blog-4.jpg" alt=""></a>
+                                        <div class="card-body">
+                                            <h4><a href="#" class="link-dark text-decoration-none">Why my website not visible in Google search</a></h4>
+                                            <div class="mb-1 text-muted"><small>Jan 29, by Charlotte</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="py-5">
+                    <div class="container py-5">
+                        <h2 class="fw-bold pb-4">Contact us</h2>
+                        <div class="row g-5">
+                            <div class="col-xl-6">
+                                <div class="row row-cols-md-2 g-4">
+                                    <div class="aos-item" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="aos-item__inner">
+                                            <div class="bg-light d-block p-3 rounded">
+                                                <div class="d-flex justify-content-start">
+                                                    <i class="fa-solid fa-envelope h3 pe-2"></i>
+                                                    <span class="h5">Email</span>
+                                                </div>
+                                                <span>example@domain.com</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="aos-item" data-aos="fade-up" data-aos-delay="400">
+                                        <div class="aos-item__inner">
+                                            <div class="bg-light d-block p-3 rounded">
+                                                <div class="d-flex justify-content-start">
+                                                    <i class="fa-solid fa-phone h3 pe-2"></i>
+                                                    <span class="h5">Phone</span>
+                                                </div>
+                                                <span>+0123456789, +9876543210</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aos-item mt-4" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="aos-item__inner">
+                                        <div class="bg-light d-block p-3 rounded">
+                                            <div class="d-flex justify-content-start">
+                                                <i class="fa-solid fa-location-pin h3 pe-2"></i>
+                                                <span class="h5">Office location</span>
+                                            </div>
+                                            <span>#007, Street name, Bigtown BG23 4YZ, England</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="aos-item" data-aos="fade-up" data-aos-delay="800">
+                                    <div class="mt-4 w-100 aos-item__inner">
+                                        <iframe class="rounded" width="100%" height="345" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">measure acres/hectares on map</a></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <h2 class="pb-4">Leave a meaage</h2>
+                                <div class="row g-4">
+                                    <div class="col-6 mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Fname</label>
+                                        <input type="text" class="form-control" placeholder="John">
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Lname</label>
+                                        <input type="text" class="form-control" placeholder="Doe">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" placeholder="+1234567890">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Country</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option value="1">USA</option>
+                                        <option value="2">Non USA</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-outline-dark">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Block Start -->
+<<<<<<< HEAD
+        <div th:replace="~{front/include/footer}"></div>
+=======
+	<div th:replace="~{front/include/footer}"></div>
+>>>>>>> 710e9f7ea42b1e486424c728d5afe5a9118574d7
+    </body>
+</html>
