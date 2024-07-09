@@ -16,16 +16,5 @@ pipeline {
                 sh 'java -version'
             }
         }
-
-
-
- 
- 
-    }
-    post {
-        // Clean after build
-        always {
-            cleanWs()
-        }
     }
 }
