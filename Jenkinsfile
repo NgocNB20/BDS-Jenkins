@@ -19,8 +19,7 @@ pipeline {
         }
        stage('Push Image') {
             steps {
-                withDockerRegistry() {
-                    sh 'docker login -u nguyenbangoc -p ngoc19112000'
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://registry-1.docker.io') {
                     sh 'docker build -t nguyenbangoc/springboot .'
                     sh 'docker push nguyenbangoc/springboot'
                 }
