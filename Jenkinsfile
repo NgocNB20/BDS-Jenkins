@@ -19,8 +19,8 @@ pipeline {
         }
        stage('Push Image') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-pwd', value: ngoc19112000) {
-                    sh 'docker login -u nguyenbangoc -p ${docker-pwd}'
+                withDockerRegistry() {
+                    sh 'docker login -u nguyenbangoc -p ngoc19112000'
                     sh 'docker build -t nguyenbangoc/springboot .'
                     sh 'docker push nguyenbangoc/springboot'
                 }
