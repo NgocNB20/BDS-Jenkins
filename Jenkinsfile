@@ -19,10 +19,8 @@ pipeline {
         }
        stage('Push Image') {
             steps {
-                 
                     sh 'docker build -t nguyenbangoc/springboot .'
-                    sh 'docker push nguyenbangoc/springboot .'
-                
+                    sh 'docker push nguyenbangoc/springboot'
             }
         }
     }
