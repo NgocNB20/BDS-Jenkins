@@ -15,8 +15,6 @@ pipeline {
                 sh 'mvn --version'
                 sh 'java -version'
                 sh 'mvn clean package'
-                sh 'docker -u nguyenbangoc -p ngoc19112000'
-                sh 'docker --version'
             }
         }
        stage('Push Image') {
