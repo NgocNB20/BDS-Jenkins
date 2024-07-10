@@ -26,45 +26,58 @@
 #    driver: bridge
 
 
-version: "3"
-name: springboot-mysql-compose
+# version: "3"
+# name: springboot-mysql-compose
 
+# services:
+#   app:
+#     container_name: khalid-springboot
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     image: khaliddinh/springboot
+#     ports:
+#       - "8082:8080"
+#     # restart: on-failure
+#     depends_on:
+#       mysql:
+#         condition: service_healthy
+#     networks:
+#       - java-app
+
+#   mysql:
+#     container_name: khalid-java-mysql
+#     image: "mysql:8.0"
+#     environment:
+#       MYSQL_DATABASE: BatDongSan
+#       MYSQL_PASSWORD: password
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:3306"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 3
+#       start_period: 30s
+#     volumes:
+#       - khalid-java-mysql-data:/var/lib/mysql
+#     networks:
+#       - java-app
+
+# volumes:
+#   khalid-java-mysql-data:
+# networks:
+#   java-app:
+#     name: java-app
+
+version: '3.8'
 services:
-  app:
-    container_name: khalid-springboot
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: khaliddinh/springboot
+  jenkins:
+    image: jenkins/jenkins:lts
+    user: root
     ports:
-      - "8082:8080"
-    # restart: on-failure
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - java-app
-
-  mysql:
-    container_name: khalid-java-mysql
-    image: "mysql:8.0"
+      - "8081:8080"
+      - "50000:50000"
+    container_name: jenkins
     environment:
-      MYSQL_DATABASE: BatDongSan
-      MYSQL_PASSWORD: password
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3306"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
-    volumes:
-      - khalid-java-mysql-data:/var/lib/mysql
-    networks:
-      - java-app
+      - DOCKER_HOST=tcp://host.docker.internal:2375
 
-volumes:
-  khalid-java-mysql-data:
-networks:
-  java-app:
-    name: java-app
 
