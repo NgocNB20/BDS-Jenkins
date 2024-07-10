@@ -8,7 +8,6 @@ pipeline {
     }
     environment {
         MYSQL_ROOT_LOGIN = credentials('my-sql-root-login')
-        PATH = "${tool 'my-docker'}/bin:${env.PATH}"
     }
     stages {
 
