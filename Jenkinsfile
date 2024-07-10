@@ -21,7 +21,7 @@ pipeline {
             steps {
             // This step should not normally be used in your script. Consult the inline help for details.
             withDockerRegistry(credentialsId: 'id_registry', url: 'https://index.docker.io/v1/') {
-                sh 'docker build -t nguyenbangoc/springboot .'
+                sh 'docker build -t nguyenbangoc/springboot Dockerfile'
                 sh 'docker push nguyenbangoc/springboot'
             }
                 
