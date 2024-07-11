@@ -4,6 +4,7 @@ pipeline {
 
     tools {
         maven 'my-maven'
+        docker: 'Docker'
     }
     stages {
         // stage('clone git') {
@@ -22,7 +23,7 @@ pipeline {
        stage('Push Image') {
             steps {
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerRegistry(credentialsId: 'id_registry', toolName: 'Docker', url: ' https://index.docker.io/v1/)') {
+                withDockerRegistry(credentialsId: 'id_registry', url: ' https://index.docker.io/v1/)') {
                     sh 'docker build -t nguyenbangoc/springboot .'
                     sh 'docker push nguyenbangoc/springboot'
                 }
