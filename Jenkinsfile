@@ -21,10 +21,10 @@ pipeline {
         }
        stage('Push Image') {
             steps {
-            // This step should not normally be used in your script. Consult the inline help for details.
-            withDockerRegistry(credentialsId: 'id_registry','https://index.docker.io/v1/') {
-
-            }
+                // This step should not normally be used in your script. Consult the inline help for details.
+                withDockerRegistry(credentialsId: 'id_registry', toolName: 'Docker') {
+                    // some block
+                }
             }
         }
     }
