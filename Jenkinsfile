@@ -7,7 +7,7 @@ pipeline {
         }
     tools {
         maven 'my-maven'
-        docker "26.1.1"
+        dockerTool "26.1.1"
     }
     stages {
         // stage('clone git') {
