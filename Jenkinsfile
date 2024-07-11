@@ -22,9 +22,8 @@ pipeline {
        stage('Push Image') {
             steps {
             // This step should not normally be used in your script. Consult the inline help for details.
-            withDockerRegistry(credentialsId: 'id_registry') {
-                sh 'docker build -t nguyenbangoc/springboot .'
-                sh 'docker push nguyenbangoc/springboot'
+            withDockerRegistry(credentialsId: 'id_registry''https://index.docker.io/v1/') {
+
             }
             }
         }
