@@ -6,11 +6,11 @@ pipeline {
         maven 'my-maven'
     }
     stages {
-        stage('clone git') {
-            steps {
-                git changelog: false, poll: false, url: 'https://github.com/NgocNB20/BDS-Jenkins.git'
-            }
-        }
+        // stage('clone git') {
+        //     steps {
+        //         git changelog: false, poll: false, url: 'https://github.com/NgocNB20/BDS-Jenkins.git'
+        //     }
+        // }
 
         stage('Build with Maven') {
             steps {
