@@ -1,10 +1,13 @@
 pipeline {
 
     agent any
-
+    environment {
+            // Định nghĩa biến môi trường cho Docker URL
+            DOCKER_URL = 'tcp://localhost:2375'
+        }
     tools {
         maven 'my-maven'
-        docker: 'Docker'
+        docker "26.1.1"
     }
     stages {
         // stage('clone git') {
