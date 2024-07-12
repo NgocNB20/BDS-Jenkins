@@ -4,13 +4,13 @@ pipeline {
         maven 'my-maven'
     }
     stages {
-        stage('Build with Maven') {
-            steps {
-                sh 'mvn --version'
-                sh 'java -version'
-                sh 'mvn clean package'
-            }
-        }
+        // stage('Build with Maven') {
+        //     steps {
+        //         sh 'mvn --version'
+        //         sh 'java -version'
+        //         sh 'mvn clean package'
+        //     }
+        // }
        stage('Push Image') {
             steps {
                 // This step should not normally be used in your script. Consult the inline help for details.
