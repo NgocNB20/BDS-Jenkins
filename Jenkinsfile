@@ -1,21 +1,9 @@
 pipeline {
-
     agent any
-    environment {
-            // Định nghĩa biến môi trường cho Docker URL
-            DOCKER_URL = 'tcp://localhost:2375'
-        }
     tools {
         maven 'my-maven'
-        dockerTool "26.1.1"
     }
     stages {
-        // stage('clone git') {
-        //     steps {
-        //         git changelog: false, poll: false, url: 'https://github.com/NgocNB20/BDS-Jenkins.git'
-        //     }
-        // }
-
         stage('Build with Maven') {
             steps {
                 sh 'mvn --version'
